@@ -23,8 +23,8 @@ Complete la tabla:
 | Ilusión | Categoria | Referencia | Tipo de interactividad (si aplica) | URL código base (si aplica) |
 |---------|-----------|------------|------------------------------------|-----------------------------|
 | __Movimiento cuadrados__    |  Geométrica         |   Presentación  *Cognitive*  | Con  el click se quita el shift| |                                 
-| __Triángulo de Penrose__  |    Paradója   |      http://journals.sagepub.com/doi/pdf/10.1068/p200001    |  https://www.openprocessing.org/sketch/375565          |
-| __Ciculos Recursivos__       |    Ambigua       |            | https://natureofcode.com/book/chapter-8-fractals/                                   |       No aplica                      |
+| __Triángulo de Penrose__  |    Paradója   |          |          |  http://journals.sagepub.com/doi/pdf/10.1068/p200001         |
+| __Ciculos Recursivos__       |    Ambigua       |            |   Con el click cambia de color     |   https://natureofcode.com/book/chapter-8-fractals/                                 |
 |
 
 2. Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar:
