@@ -27,10 +27,14 @@ Complete la tabla:
 | __Ciculos Recursivos__       |    Ambigua       |            |   Con el click cambia de color     |   https://natureofcode.com/book/chapter-8-fractals/                                 |
 |"Missing Corner" Cube | Ambigua | https://michaelbach.de/ot/sze-missCornerCube/index.html | posición del mouse | |
 | “Breathing Square” | Geométrica | https://michaelbach.de/ot/mot-breathingSquare/index.html | posición del mouse | |
-| Ebbinghaus | Geométrica | https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_Ebbinghaus | | |
+| Ebbinghaus | Geométrica | https://es.wikipedia.org/wiki/Ilusi%C3%B3n_de_Ebbinghaus | Se aplica moviento a la original | |
 
 2. Describa brevememente las referencias estudiadas y los posibles temas en los que le gustaría profundizar:
+
 Se uso cómo guía la página https://michaelbach.de para comprender las diferentes ilusiones visuales y poder resprentarlas en este taller. 
+
+Nos gustaria profundizar en ilusiones como la de [Face in blocks](https://michaelbach.de/ot/fcs-mosaic/index.html)
+
 
 ## Entrega
 
