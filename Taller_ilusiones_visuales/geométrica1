@@ -1,0 +1,27 @@
+int Change = 20; 
+void square(){
+  strokeWeight(2);
+  stroke(150);
+   int shift= -Change, y0=0;  
+  
+ for(int i=0; i<60;i++){
+   for(int j=0; j<60;j++){
+     if(i%2==0){
+       if(j%2==0)
+         fill(255);
+       else if(j%2==1)
+         fill(0);
+      rect(shift+(j*FIG_SIZE),y0+i*FIG_SIZE,FIG_SIZE,FIG_SIZE);
+     }else if(i%2==1){
+        if(j%2==0)
+         fill(0);
+       else if(j%2==1)
+         fill(255);
+         if(!mousePressed)
+           rect(shift+(Change+j*FIG_SIZE),y0+i*FIG_SIZE,FIG_SIZE,FIG_SIZE);
+         else
+            rect(shift+(j*FIG_SIZE),y0+i*FIG_SIZE,FIG_SIZE,FIG_SIZE);
+     }
+   }
+ }
+}
