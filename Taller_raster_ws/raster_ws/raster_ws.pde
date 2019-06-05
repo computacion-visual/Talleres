@@ -22,7 +22,7 @@ boolean debug = true;
 String renderer = P3D;
 
 // 4. Window dimension
-int dim = 10;
+int dim = 9;
 
 void settings() {
   size(int(pow(2, dim)), int(pow(2, dim)), renderer);
@@ -76,22 +76,46 @@ void draw() {
   popMatrix();
 }
 
+float edgeFuntions(Vector v1, Vector v2, Vector P){
+  return ((P.x() - v1.x())*(v2.y() - v1.y()) - (P.y() - v1.y())*(v2.x() - v1.x()));
+}
+
 // Implement this function to rasterize the triangle.
 // Coordinates are given in the node system which has a dimension of 2^n
 void triangleRaster() {
   // node.location converts points from world to node
   // here we convert v1 to illustrate the idea
-  if (debug) {
-    pushStyle();
-    stroke(255, 255, 0, 125);
-    point(round(node.location(v1).x()), round(node.location(v1).y()));
-    popStyle();
-  }
+
+  Vector p = new Vector(0,0);
+  int pc = floor(width/pow(2,n));
+
+  pushStyle();
+  stroke(155,255,0,0);
+
+  for (int i= -width/2; i<width/2; i +=pc){
+    for (int j=-width/2; j<width/2; j+=pc){
+      p = new Vector(i-(0.5*pc),j-(0.5*pc)); 
+      float w0 = edgeFuntions(v2, v3, p);
+      float w1 = edgeFuntions(v3, v1, p);
+      float w2 = edgeFuntions(v1, v2, p);
+  
+      if ((w0 >= 0 && w1 >= 0 && w2 >= 0) || (w0 < 0 && w1 < 0 && w2 < 0)) {
+        float sum = w0 + w1 + w2;
+        float r = 255 * w0/sum;
+        float g = 255 * w1/sum;
+        float b = 255 * w2/sum;
+        rectMode(CENTER);
+        fill(r, g, b);
+        rect(round(node.location(p).x())-0.5, round(node.location(p).y())-0.5,1,1);
+       }    
+     }
+   }
+  popStyle();
 }
 
 void randomizeTriangle() {
   int low = -width/2;
-  int high = width/2;
+  int high = width/2;  
   v1 = new Vector(random(low, high), random(low, high));
   v2 = new Vector(random(low, high), random(low, high));
   v3 = new Vector(random(low, high), random(low, high));
