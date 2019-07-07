@@ -1,6 +1,8 @@
-#Taller de Shaders
-##Gabriela Suárez Carvajal - Katherin Viviana Sierra Briñez
-###Punto 1
+# Taller de Shaders
+###### Gabriela Suárez Carvajal - Katherin Viviana Sierra Briñez
+
+
+### Punto 1
 
 Se implemento por hardware y por sotfware tres mascaras de convolución: edge detection, sharpen y box blur. Luego se hizo una medición del rendimiento que arrojo los siguientes resultados:
 
