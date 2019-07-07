@@ -1,0 +1,27 @@
+PImage vdorig;
+
+PShader shader;
+PShader bwShader;
+PShader embossShader;
+PShader sharpenfrag;
+PShader boxblurfrag;
+
+void setup() {
+  println("FPS:", frameRate);
+  size(640, 360, P3D);
+  vdorig = loadImage("vdorig.png");
+  
+  shader = loadShader("edgesfrag.glsl");
+  //shader = loadShader("sharpenfrag.glsl");
+  //shader = loadShader("boxblurfrag.glsl");
+}
+
+void draw() {
+  background(0);
+  
+  image(vdorig, 0, 0);
+  shader(shader);
+  
+  println("FPS:", frameRate);
+  println("");
+}
