@@ -57,6 +57,8 @@ void draw(){
   background(0);
   scene.render();
   addLightsToShader(lightingShader);
+  
+  println("draw");
 }
 
 void setupModels(){
@@ -86,7 +88,7 @@ void setupLights(){
       addPointLight(255,255,255, position().x(), position().y(), position().y());
     }
   };
-  light.setPosition(new Vector(0, 0, 200));
+  light.setPosition(new Vector(100, 100, 200));
   light.setPickingThreshold(0);
 }
 
