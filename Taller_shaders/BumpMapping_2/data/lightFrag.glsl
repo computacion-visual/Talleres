@@ -75,9 +75,6 @@ void main() {
   vec3 totalFrontDiffuse = vec3(0, 0, 0);
   vec3 totalFrontSpecular = vec3(0, 0, 0);
 
-  vec3 totalBackDiffuse = vec3(0, 0, 0);
-  vec3 totalBackSpecular = vec3(0, 0, 0);
-
   vec3 normal = normalFromTexture(normalTexture);
   vec3 normalInv = normal * -one_float;
 
@@ -112,15 +109,11 @@ void main() {
     if (any(greaterThan(myLightDiffuse[i], zero_vec3))) {
       totalFrontDiffuse  += myLightDiffuse[i] * falloff * spotf *
                             lambertFactor(lightDir, normal);
-      totalBackDiffuse   += myLightDiffuse[i] * falloff * spotf *
-                            lambertFactor(lightDir, normalInv);
     }
 
     if (any(greaterThan(myLightSpecular[i], zero_vec3))) {
       totalFrontSpecular += myLightSpecular[i] * falloff * spotf *
                             blinnPhongFactor(lightDir, ecPosition, normal, vertShininess);
-      totalBackSpecular  += myLightSpecular[i] * falloff * spotf *
-                            blinnPhongFactor(lightDir, ecPosition, normalInv, vertShininess);
     }
   }
 
@@ -131,9 +124,5 @@ void main() {
                   vec4(vec3(0, 0, 0), 0) * vertSpecular +
                   vec4(vertDiffuse.rgb, 0);
 
-  vec4 backVertColor = vec4(totalAmbient, 0) * vertAmbient +
-                  vec4(totalBackDiffuse, 1) * vertColor +
-                  vec4(totalBackSpecular, 0) * vertSpecular +
-                  vec4(vertDiffuse.rgb, 0);
   gl_FragColor = texture2D(texture, vertTexCoord.st) * frontVertColor;
 }
