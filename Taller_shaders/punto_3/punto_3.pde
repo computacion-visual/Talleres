@@ -21,7 +21,7 @@ PShader lightingShader;
 
 // variables for shader uniforms
 final int MAX_LIGHTS = 10;
-int lightCount = 0;
+int lightCount = 7;
 float[] lightPosition = new float[MAX_LIGHTS * 4];
 float[] lightNormal = new float[MAX_LIGHTS * 3];
 float[] lightAmbient = new float[MAX_LIGHTS * 3];
@@ -35,7 +35,7 @@ float[] currentLightFalloff = {2, 0, 0};
 
 void setup() {
   shapeMode(CENTER);
-  size(1080, 720, OPENGL);
+  size(400, 400, OPENGL);
   lightingShader = loadShader("lightFrag.glsl", "lightVert.glsl");
   
   image = loadImage("metalplate_base.jpg");
@@ -65,7 +65,7 @@ void setupModels(){
     public void graphics(PGraphics pg) {
       noStroke();
       PShape modelShape;
-      modelShape = pg.createShape(BOX, 200);
+      modelShape = pg.createShape(BOX, 300);
       modelShape.setTexture(image);
       if(bumpMapping){
         lightingShader.set("normalTexture", image_blur);
@@ -83,7 +83,6 @@ void setupLights(){
     @Override
     public void graphics(PGraphics pg){
       stroke(255,255,255);
-      pg.sphere(10)   ;
       addPointLight(255,255,255, position().x(), position().y(), position().y());
     }
   };
@@ -121,7 +120,6 @@ void addSpotLight(float r, float g, float b, float x, float y, float z, float dx
   lightSpecular(lightCount, currentLightSpecular[0], currentLightSpecular[1], currentLightSpecular[2]);
   lightSpot(lightCount, angle, concentration);
   lightFalloff(lightCount, currentLightFalloff[0], currentLightFalloff[1], currentLightFalloff[2]);
-  lightCount++;
 }
 
 void addLightsToShader(PShader sh){
@@ -137,12 +135,9 @@ void addLightsToShader(PShader sh){
 
 void lightPosition(int num, float x, float y, float z) {
   PGraphicsOpenGL pg = (PGraphicsOpenGL)g;
-  lightPosition[4 * num + 0] =
-  x*pg.modelview.m00 + y*pg.modelview.m01 + z*pg.modelview.m02 + pg.modelview.m03;
-  lightPosition[4 * num + 1] =
-  x*pg.modelview.m10 + y*pg.modelview.m11 + z*pg.modelview.m12 + pg.modelview.m13;
-  lightPosition[4 * num + 2] =
-  x*pg.modelview.m20 + y*pg.modelview.m21 + z*pg.modelview.m22 + pg.modelview.m23;
+  lightPosition[4 * num + 0] = x*pg.modelview.m00 + y*pg.modelview.m01 + z*pg.modelview.m02 + pg.modelview.m03;
+  lightPosition[4 * num + 1] = x*pg.modelview.m10 + y*pg.modelview.m11 + z*pg.modelview.m12 + pg.modelview.m13;
+  lightPosition[4 * num + 2] = x*pg.modelview.m20 + y*pg.modelview.m21 + z*pg.modelview.m22 + pg.modelview.m23;
   lightPosition[4 * num + 3] = 1;
 }
 
