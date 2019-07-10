@@ -1,8 +1,8 @@
 PImage img;
 
-float[][] edgeDetectionMatrix =  { { 1, 0, -1 } , 
-                                   { 0, 0, 0 } ,
-                                   { -1, 0, 1 } } ;
+float[][] edgeDetectionMatrix =  { { -1, -1, -1 } , 
+                                   { -1, 8, -1 } ,
+                                   { -1, -1, -1 } } ;
                                    
 float[][] sharpenMatrix =  { { 0, -1.0, 0 } , 
                              { -1.0, 5.0, -1.0 } ,
@@ -15,13 +15,13 @@ float[][] boxBlurMatrix =  { { 1.0/9, 1.0/9, 1.0/9 } ,
 
 void setup() {
   img = loadImage("vdorig.png");
-  //img.pixels = applyConvolution(img.pixels, edgeDetectionMatrix, 3, img.width);
-  img.pixels = applyConvolution(img.pixels, boxBlurMatrix, 3, img.width);
+  img.pixels = applyConvolution(img.pixels, edgeDetectionMatrix, 3, img.width);
   println("FPS:", frameRate);
 }
 
 void draw() {
   image(img, 0, 0);
+  println("FPS:", frameRate);
 }
 
 import processing.video.*;
