@@ -1,11 +1,14 @@
 import processing.video.*;
 Movie myMovie;
 PShader shader;
+int option = 0;
+
 
 void setup() {
-  size(200, 200);
+  size(640, 640, P3D);  
+  frameRate(60);
   myMovie = new Movie(this, "cat.mp4");
-  myMovie.loop();
+  myMovie.play();
   
   shader = loadShader("edgesfrag.glsl");
 }
